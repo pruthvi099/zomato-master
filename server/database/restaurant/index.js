@@ -4,32 +4,26 @@ const RestaurantSchema = new mongoose.Schema({
     name: { type: String, required: true },
     city: { type: String, required: true },
     address: { type: String, required: true },
-    mapLocations: { type: String, required: true },
+    mapLocation: { type: String, required: true },
     cuisine: [String],
     restaurantTimings: String,
     contactNumber: Number,
-    website: Number,
+    website: String,
     popularDishes: [String],
     averageCost: Number,
-    amenties: [String],
+    amenities: [String],
     menuImages: {
         type: mongoose.Types.ObjectId,
-        ref = "Images",
+        ref: "Images"
     },
     menu: {
         type: mongoose.Types.ObjectId,
-        ref = "Menus",
+        ref: "Menus"
     },
-    reviews: [{
-        type: mongoose.Types.ObjectId,
-        ref = "Reviews",
-    }],
-    photos: {
-        type: mongoose.Types.ObjectId,
-        ref = "Images",
-    }
+    reviews: [{ type: mongoose.Types.ObjectId, ref: "Reviews" }],
+    photos: { type: mongoose.Types.ObjectId, ref: "Images" }
 }, {
-    timestamps: true,
+    timestamps: true
 });
 
 export const RestaurantModel = mongoose.model("Restaurants", RestaurantSchema);

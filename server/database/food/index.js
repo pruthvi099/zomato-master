@@ -8,19 +8,20 @@ const FoodSchema = new mongoose.Schema({
     category: { type: String, required: true },
     photos: {
         type: mongoose.Types.ObjectId,
-        ref = "Images",
+        ref: "Images"
     },
-
     price: { type: Number, default: 150, required: true },
     addOns: [{
         type: mongoose.Types.ObjectId,
-        ref = "Foods",
+        ref: "Foods"
     }],
     restaurant: {
         type: mongoose.Types.ObjectId,
-        ref = "Restaurants",
-        required: true,
-    },
-}, { timestamps: true, });
+        ref: "Restaurants",
+        required: true
+    }
+}, {
+    timestamps: true
+});
 
 export const FoodModel = mongoose.model("Foods", FoodSchema);
