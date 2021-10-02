@@ -11,8 +11,11 @@ import googleAuthConfig from "./config/google.config";
 
 //API
 import Auth from "./API/Auth";
-import Restaurant from "./API/Restuarant";
-
+import Restaurant from "./API/Restaurant";
+import Food from "./API/Food";
+import Order from "./API/orders";
+import Reviews from "./API/reviews"
+import User from "./API/User";
 
 //Database connection
 import ConnectDB from "./database/connection";
@@ -41,7 +44,11 @@ zomato.use(passport.session());
 //For application routes
 //localhost:4000/auth/signup
 zomato.use("/auth", Auth);
-zomato.use("/restaurant", Restaurant)
+zomato.use("/restaurant", Restaurant);
+zomato.use("/food", Food);
+zomato.use("/order", Order);
+zomato.use("/reviews", Reviews);
+zomato.use("/user", User);
 
 zomato.get("/", (req, res) => res.json({ message: "SetUp Success ✅" }));
 
