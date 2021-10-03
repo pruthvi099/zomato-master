@@ -8,6 +8,7 @@ import passport from "passport";
 
 //configs
 import googleAuthConfig from "./config/google.config";
+import routeConfig from "./config/route.config";
 
 //API
 import Auth from "./API/Auth";
@@ -30,6 +31,7 @@ zomato.use(cors());
 
 //passport configurations
 googleAuthConfig(passport);
+routeConfig(passport);
 const session = require("express-session");
 
 // application middlewares
