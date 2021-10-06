@@ -1,12 +1,16 @@
-
 //HOC
 import HomeLayoutHOC from "./HOC/Home.Hoc"
+
+//components
 import Temp from "./components/temp"
+import Master from "./components/master";
+
 function App() {
   return (
-    <div> 
+    <> 
     <HomeLayoutHOC path="/" exact component={Temp}/>
-    </div>
+    <HomeLayoutHOC path="/:type" exact component={Master}/>
+    </>
   );
 }
 
