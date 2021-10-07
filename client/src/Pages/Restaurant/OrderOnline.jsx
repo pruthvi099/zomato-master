@@ -3,7 +3,6 @@ import React from "react";
 // components
 import FloatMenuBtn from "../../components/restaurant/Order-Online/FloatMenuBtn";
 import MenuListContainer from "../../components/restaurant/Order-Online/MenuListContainer";
-import FoodItem from "../../components/restaurant/Order-Online/FoodItem"
 import FoodList from "../../components/restaurant/Order-Online/FoodList";
 import { AiOutlineCompass } from "react-icons/ai";
 import { BiTimeFive } from "react-icons/bi";
@@ -24,34 +23,7 @@ const OrderOnline = () => {
             </h4>
           </div>
           <section className="flex  h-screen overflow-y-scroll flex-col gap-3 md:gap-5">
-            <FoodList
-              title="Recommended"
-              items={[
-                {
-                  price: "1000",
-                  rating: 3,
-                  description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem dicta repellendus sit cumque eum odio animi doloribus quo voluptatem aut ipsam, consectetur non minima rerum eligendi magnam aspernatur culpa provident?",
-                  title: "Yummy food",
-                  image:
-                    "https://b.zmtcdn.com/data/dish_photos/839/62575c08ce26635e3f48b3642805d839.jpg?output-format=webp",
-                },
-              ]}
-            />
-            <FoodList
-              title="Pizza"
-              items={[
-                {
-                  price: "1000",
-                  rating: 3,
-                  description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem dicta repellendus sit cumque eum odio animi doloribus quo voluptatem aut ipsam, consectetur non minima rerum eligendi magnam aspernatur culpa provident?",
-                  title: "Yummy food",
-                  image:
-                    "https://b.zmtcdn.com/data/dish_photos/839/62575c08ce26635e3f48b3642805d839.jpg?output-format=webp",
-                },
-              ]}
-            />
+           
           </section>
         </div>
       </div>
