@@ -20,6 +20,7 @@ const FoodItem = (props) => {
       });
     });
   }, []);
+
   const addFoodToCart = () => {
     dispatch(addCart({ ...food, quantity: 1, totalPrice: food.price }));
     setFood((prev) => ({ ...prev, isAddedToCart: true }));
@@ -60,7 +61,7 @@ const FoodItem = (props) => {
             <p className="truncate">{food?.descript}</p>
           </div>
           <div className="hidden md:block w-2/12	">
-          <button
+            <button
               onClick={addFoodToCart}
               disabled={food.isAddedToCart}
               className=" flex items-center gap-2 text-zomato-400 bg-zomato-50 border border-zomato-400 px-4 py-2 rounded-lg"
@@ -74,7 +75,7 @@ const FoodItem = (props) => {
               )}
             </button>
           </div>
-      </div>
+        </div>
       )}
     </>
   );
