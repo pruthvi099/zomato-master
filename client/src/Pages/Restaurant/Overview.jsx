@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { IoMdArrowDropright } from "react-icons/io";
 import Slider from "react-slick";
@@ -7,13 +7,16 @@ import ReactStars from "react-rating-stars-component";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { MdContentCopy } from "react-icons/md";
 import { FaDirections } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
 // components
 import MenuCollection from "../../components/restaurant/MenuCollection";
 import MenuSimilarRestaurantcard from "../../components/restaurant/MenuSimilarRestaurantcard";
 import { NextArrow, PrevArrow } from "../../components/CarousalArrow";
 import ReviewCard from "../../components/restaurant/Reviews/reviewCard";
 import Mapview from "../../components/restaurant/Mapview";
+import { getImage } from "../../Redux/Reducer/Image/Image.action";
 const Overview = () => {
+  const [menuImage, setMenuImages] = useState({ images: [] });
   const { id } = useParams();
 
   const settings = {
@@ -52,6 +55,20 @@ const Overview = () => {
       },
     ],
   };
+  const reduxState = useSelector(
+    (globalStore) => globalStore.restaurant.selectedRestaurant.restaurant
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (reduxState) {
+      dispatch(getImage(reduxState?.menuImage)).then((data) => {
+        const images = [];
+        data.payload.image.images.map(({ location }) => images.push(location));
+        setMenuImages(images);
+      });
+    }
+  }, []);
 
   const ratingChanged = (newRating) => {
     console.log(newRating);
@@ -72,14 +89,7 @@ const Overview = () => {
             </Link>
           </div>
           <div className="flex flex-wrap gap-3 my-4">
-            <MenuCollection
-              menuTitle="Menu"
-              pages="3"
-              image={[
-                "https://b.zmtcdn.com/data/menus/920/19438920/21fa39744f465abc5f947f1e9319fb5d.jpg",
-                "https://images.unsplash.com/photo-1526382551041-3c817fc3d478?dpr=2&auto=format&w=1024&h=1024",
-              ]}
-            />
+          <MenuCollection menuTitle="Menu" pages="3" image={menuImage} />
           </div>
           <h4 className="text-lg font-medium my-4">Cuisines</h4>
           <div className="flex flex-wrap gap-2">
