@@ -1,5 +1,9 @@
 import { Route, Redirect } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+//redux action
+import { getMyself } from "./Redux/Reducer/User/user.action";
 //HOC
 import HomeLayoutHOC from "./HOC/Home.Hoc"
 import RestaurantLayoutHOC from "./HOC/Restaurant.HOC";
@@ -23,6 +27,10 @@ if (localStorage.zomatoUser) {
 }
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (localStorage.zomatoUser) dispatch(getMyself());
+  }, []);
   return (
     <> 
     <Route path="/" exact>
