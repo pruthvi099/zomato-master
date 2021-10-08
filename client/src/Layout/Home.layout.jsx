@@ -6,7 +6,7 @@ import FoodTab from "../components/FoodTab";
 // redux action
 import { getCart } from "../Redux/Reducer/Cart/Cart.action";
 const HomeLayout=(props)=>{
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCart());
   }, []);

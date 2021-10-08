@@ -6,7 +6,7 @@ import {
 } from "react-icons/io";
 import { IoCloseSharp } from "react-icons/io5";
 import { useSelector, useDispatch } from "react-redux";
-
+import { useHistory } from "react-router";
 // components
 import FoodItem from "./FoodItem";
 
@@ -15,7 +15,9 @@ import { getCart } from "../../Redux/Reducer/Cart/Cart.action";
 
 const CartSM = ({ toggle }) => {
   const reduxState = useSelector((global) => global.cart.cart);
+  const history = useHistory();
 
+  const continueToCheckout = () => history.push("/checkout/orders");
   return (
     <>
       <div className=" md:hidden flex items-center justify-between">
@@ -28,7 +30,10 @@ const CartSM = ({ toggle }) => {
             <sub>(plus tax)</sub>
           </h4>
         </div>
-        <button className="flex items-center gap-1 bg-zomato-400 px-3 py-1 text-white rounded-lg">
+        <button
+          onClick={continueToCheckout}
+          className="flex items-center gap-1 bg-zomato-400 px-3 py-1 text-white rounded-lg"
+        >
           Continue <IoMdArrowDropright />
         </button>
       </div>
@@ -37,7 +42,9 @@ const CartSM = ({ toggle }) => {
 };
 const CartLg = ({ toggle }) => {
   const reduxState = useSelector((global) => global.cart.cart);
+  const history = useHistory();
 
+  const continueToCheckout = () => history.push("/checkout/orders");
   return (
     <>
       <div className=" hidden md:flex items-center justify-between container px-20 mx-auto">
@@ -55,7 +62,10 @@ const CartLg = ({ toggle }) => {
             Subtotal:₹{" "}
             {reduxState.reduce((acc, curVal) => acc + curVal.totalPrice, 0)}
           </h4>
-          <button className="flex items-center text-lg h-10 font-light gap-1 bg-zomato-400 px-3 py-1 text-white rounded-lg">
+          <button
+            onClick={continueToCheckout}
+            className="flex items-center text-lg h-10 font-light gap-1 bg-zomato-400 px-3 py-1 text-white rounded-lg"
+          >
             Continue <IoMdArrowDropright />
           </button>
         </div>
