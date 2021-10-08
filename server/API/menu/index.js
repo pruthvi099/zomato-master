@@ -15,7 +15,7 @@ Method           GET
 Router.get("/r/:id", async(req, res) => {
     try {
         const { _id } = req.params;
-        const menus = await MenuModel.find(_id);
+        const menus = await MenuModel.findById(_id);
         return res.json({ menus });
     } catch (error) {
         return res.status(500).json({ error: error.message });
