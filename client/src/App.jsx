@@ -15,7 +15,7 @@ import Menu from "./Pages/Restaurant/Menu";
 import Photos from "./Pages/Restaurant/Photos"
 import Checkout from "./Pages/Checkout";
 import RedirectRestaurant from "./Pages/Restaurant/Redirect";
-
+import GoogleAuth from "./Pages/GoogleAuth";
 // axios global settings
 if (localStorage.zomatoUser) {
   const { token } = JSON.parse(localStorage.zomatoUser);
@@ -29,9 +29,8 @@ function App() {
         <Redirect to="/delivery" />
       </Route>
       <Route path="/restaurant/:id" exact component={RedirectRestaurant} />
-      
-      <HomeLayoutHOC path="/:type" exact component={Home} />
-      
+       <HomeLayoutHOC path="/:type" exact component={Home} />
+       <HomeLayoutHOC path="/google/:token" exact component={GoogleAuth} />
       <RestaurantLayoutHOC
         path="/restaurant/:id/overview"
         exact
